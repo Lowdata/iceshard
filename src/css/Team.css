@@ -104,7 +104,7 @@
 
 .team-card {
   perspective: 1000px;
-  height: 450px;
+  height: 420px;
   opacity: 0;
   transform: translateY(20px);
   animation: card-appear 0.5s forwards;
@@ -149,14 +149,49 @@
   justify-content: center;
 }
 
+.card-back .back-content {
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.description {
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-text);
+  max-height: 70%;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Custom scrollbar for description */
+.description::-webkit-scrollbar {
+  width: 4px;
+}
+
+.description::-webkit-scrollbar-track {
+  background: rgba(0, 234, 255, 0.1);
+  border-radius: 2px;
+}
+
+.description::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 2px;
+}
+
 .member-image {
   position: relative;
-  height: 280px;
+  height: 240px;
   overflow: hidden;
 }
 
 .member-image img {
-  width: 180%;
+  width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
@@ -170,56 +205,74 @@
   height: 100%;
   background: linear-gradient(
     to bottom,
-    transparent,
-    rgba(0, 0, 0, 0.8)
+    transparent 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.8) 100%
   );
 }
 
 .member-info {
   padding: 1.5rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .member-info h3 {
   font-family: var(--font-cyber);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--primary);
-  margin-bottom: 0.5rem;
+  margin: 0;
+  letter-spacing: 1px;
 }
 
 .member-info .role {
   color: var(--primary);
-  font-size: 1.1rem;
-  margin: 0.5rem 0;
+  font-size: 1rem;
+  margin: 0;
+  font-family: var(--font-text);
+  font-weight: 500;
 }
 
 .member-info .faction {
   color: var(--text-secondary);
-  font-size: 1rem;
+  font-size: 0.9rem;
+  margin: 0;
+  font-family: var(--font-text);
 }
 
 .social-links {
   display: flex;
-  gap: 1.5rem;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: auto;
 }
 
 .social-icon {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: rgba(0, 234, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   transition: all 0.3s ease;
+  border: 1px solid rgba(0, 234, 255, 0.3);
 }
 
 .social-icon:hover {
   background: var(--primary);
   color: var(--background);
   transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 234, 255, 0.3);
+}
+
+/* Add hover effect for front image */
+.team-card:hover .member-image img {
+  transform: scale(1.1);
 }
 
 /* Join Section */
@@ -312,7 +365,7 @@
   }
   
   .team-card {
-    height: 400px;
+    height: 380px;
   }
 
   .hero-stats {
@@ -322,5 +375,23 @@
 
   .stat-number {
     font-size: 2rem;
+  }
+
+  .member-image {
+    height: 220px;
+  }
+
+  .member-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .social-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
   }
 }

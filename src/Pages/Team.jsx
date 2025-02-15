@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { FaLinkedinIn, FaTwitter, FaGithub, FaInstagram } from 'react-icons/fa';
 import "../css/Team.css";
 
 const Team = () => {
@@ -53,7 +54,7 @@ const Team = () => {
       role: "Senior Graphic Designer",
       faction: "Visual Crusaders 🎨🖌️",
       description:
-        "Creator of worlds. Khwaish wields pixels and palettes like weapons. Her designs don’t just catch the eye—they seize the soul. She crafts visuals so compelling they leave competitors trembling. Beauty with an edge.",
+        "Creator of worlds. Khwaish wields pixels and palettes like weapons. Her designs don't just catch the eye—they seize the soul. She crafts visuals so compelling they leave competitors trembling. Beauty with an edge.",
       img: "img/Team/khwaish.jpg",
       social: {
         linkedin: "#",
@@ -66,7 +67,7 @@ const Team = () => {
       role: "Senior Concept Artist",
       faction: "Visionary Artists 🖼️🔮",
       description:
-        "Dream-weaver. Architect of imagination. Pranav bends reality to his will, bringing to life realms so immersive they blur the line between fiction and existence. His art doesn’t just inspire—it dominates the mind.",
+        "Dream-weaver. Architect of imagination. Pranav bends reality to his will, bringing to life realms so immersive they blur the line between fiction and existence. His art doesn't just inspire—it dominates the mind.",
       img: "img/Team/pranav.jpg",
       social: {
         linkedin: "#",
@@ -79,7 +80,7 @@ const Team = () => {
       role: "VR/AR Specialist",
       faction: "Virtual Vanguard 🕶️🌐",
       description:
-        "Pioneer of the unreal. Aryan engineers experiences that defy physics and logic. He is the gatekeeper to alternate realities, where the impossible becomes inevitable. He doesn’t follow trends—he creates them.",
+        "Pioneer of the unreal. Aryan engineers experiences that defy physics and logic. He is the gatekeeper to alternate realities, where the impossible becomes inevitable. He doesn't follow trends—he creates them.",
       img: "img/Team/aryan.jpg",
       social: {
         linkedin: "#",
@@ -92,7 +93,7 @@ const Team = () => {
       role: "Full-Stack Developer",
       faction: "Code Warriors 💻⚔️",
       description:
-        "Architect of digital dominance. Ayush’s code is more than syntax—it’s the framework of conquest. Fast, unbreakable, and scalable, his systems give IceShard the edge to stay ahead, crushing lag and competition alike.",
+        "Architect of digital dominance. Ayush's code is more than syntax—it's the framework of conquest. Fast, unbreakable, and scalable, his systems give IceShard the edge to stay ahead, crushing lag and competition alike.",
       img: "img/Team/Ayush_1.jpg",
       social: {
         linkedin: "#",
@@ -115,6 +116,31 @@ const Team = () => {
     }
   ];
   
+
+  const renderSocialIcons = (social) => (
+    <div className="social-links">
+      {social.linkedin && (
+        <a href={social.linkedin} className="social-icon" target="_blank" rel="noopener noreferrer">
+          <FaLinkedinIn />
+        </a>
+      )}
+      {social.twitter && (
+        <a href={social.twitter} className="social-icon" target="_blank" rel="noopener noreferrer">
+          <FaTwitter />
+        </a>
+      )}
+      {social.github && (
+        <a href={social.github} className="social-icon" target="_blank" rel="noopener noreferrer">
+          <FaGithub />
+        </a>
+      )}
+      {social.instagram && (
+        <a href={social.instagram} className="social-icon" target="_blank" rel="noopener noreferrer">
+          <FaInstagram />
+        </a>
+      )}
+    </div>
+  );
 
   return (
     <div className={`team-container ${isVisible ? 'visible' : ''}`}>
@@ -164,17 +190,7 @@ const Team = () => {
                 <div className="card-back">
                   <div className="back-content">
                     <p className="description">{member.description}</p>
-                    <div className="social-links">
-                      <a href={member.social.twitter} className="social-icon">
-                        <i className="fab fa-twitter"></i>
-                      </a>
-                      <a href={member.social.linkedin} className="social-icon">
-                        <i className="fab fa-linkedin"></i>
-                      </a>
-                      <a href={member.social.github} className="social-icon">
-                        <i className="fab fa-github"></i>
-                      </a>
-                    </div>
+                    {renderSocialIcons(member.social)}
                   </div>
                 </div>
               </div>
