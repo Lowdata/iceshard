@@ -12,6 +12,7 @@
   padding: 0 40px;
   box-sizing: border-box;
   z-index: 1000;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
 }
 
 /* Logo */
@@ -73,6 +74,24 @@
   background: rgba(60, 60, 67, 0.3);
 }
 
+/* Add these new styles */
+.header-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.header-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+/* Add a background when scrolling */
+.header.scrolled {
+  background: rgba(6, 148, 148, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
 /* --- 📌 Responsive Styles --- */
 
 /* Show Hamburger and Hide Nav Menu on Small Screens */
@@ -97,10 +116,16 @@
     background: #069494;
     padding: 10px 0;
     text-align: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
   }
 
   .nav-menu.active {
-    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
   }
 
   .nav-menu ul {
@@ -113,6 +138,12 @@
     width: 160px;
     height: 55px;
     font-size: 13px;
+  }
+
+  /* Ensure menu is visible when header is hidden */
+  .header-hidden .nav-menu.active {
+    opacity: 1;
+    transform: translateY(103px);
   }
 }
 

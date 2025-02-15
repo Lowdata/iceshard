@@ -4,6 +4,8 @@ import Home from "./Home";
 import Team from "../Pages/Team";
 import WhoWeAre from "../Pages/WhoWeAre";
 import PreRegister from "../Pages/PreRegister";
+import News from "../Pages/News";
+import ArticleDetail from "../Pages/ArticleDetail";
 
 const Layout = ({ page }) => {
   const renderPage = () => {
@@ -14,6 +16,10 @@ const Layout = ({ page }) => {
         return <WhoWeAre />;
       case "pre-register":
         return <PreRegister />;
+      case "news":
+        return <News />;
+      case "article":
+        return <ArticleDetail />;
       default:
         return <Home />;
     }
