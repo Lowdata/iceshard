@@ -1,131 +1,198 @@
+import { useState, useEffect } from 'react';
 import "../css/Team.css";
 
 const Team = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const teamMembers = [
+    {
+      name: "Nishant Latiyal",
+      role: "Founder/CEO",
+      faction: "The Overseers 👁️‍🗨️",
+      description:
+        "Visionary. Strategist. Mastermind. Nishant is the architect behind IceShard Games' meteoric rise. With unyielding determination and razor-sharp foresight, he leads the charge, breaking boundaries and setting new standards. Failure isn't an option—only dominance.",
+      img: "img/Team/ceo.jpg",
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        github: "#"
+      }
+    },
+    {
+      name: "Ayush Saini",
+      role: "Co-founder/CFO",
+      faction: "The Overseers 👁️‍🗨️",
+      description:
+        "Guardian of the gold. Ayush commands the financial realm with ruthless precision. His strategies keep the war chest overflowing, fueling our relentless expansion. No budget leaks. No financial missteps. Just pure, calculated growth.",
+      img: "img/Team/ayush_saini.jpg",
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        github: "#"
+      }
+    },
+    {
+      name: "Shashwat",
+      role: "CMO",
+      faction: "Marketing Maestros 🎯📢",
+      description:
+        "Master of influence. Shashwat doesn't just market—he dominates the narrative. With campaigns that cut through the noise like a blade, he commands attention and loyalty. Competitors fear his name, for he controls the public's perception.",
+      img: "img/Team/shaswat.jpg",
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        github: "#"
+      }
+    },
+    {
+      name: "Khwaish Verma",
+      role: "Senior Graphic Designer",
+      faction: "Visual Crusaders 🎨🖌️",
+      description:
+        "Creator of worlds. Khwaish wields pixels and palettes like weapons. Her designs don’t just catch the eye—they seize the soul. She crafts visuals so compelling they leave competitors trembling. Beauty with an edge.",
+      img: "img/Team/khwaish.jpg",
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        github: "#"
+      }
+    },
+    {
+      name: "Pranav Kapoor",
+      role: "Senior Concept Artist",
+      faction: "Visionary Artists 🖼️🔮",
+      description:
+        "Dream-weaver. Architect of imagination. Pranav bends reality to his will, bringing to life realms so immersive they blur the line between fiction and existence. His art doesn’t just inspire—it dominates the mind.",
+      img: "img/Team/pranav.jpg",
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        github: "#"
+      }
+    },
+    {
+      name: "Aryan",
+      role: "VR/AR Specialist",
+      faction: "Virtual Vanguard 🕶️🌐",
+      description:
+        "Pioneer of the unreal. Aryan engineers experiences that defy physics and logic. He is the gatekeeper to alternate realities, where the impossible becomes inevitable. He doesn’t follow trends—he creates them.",
+      img: "img/Team/aryan.jpg",
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        github: "#"
+      }
+    },
+    {
+      name: "Ayush Pahuja",
+      role: "Full-Stack Developer",
+      faction: "Code Warriors 💻⚔️",
+      description:
+        "Architect of digital dominance. Ayush’s code is more than syntax—it’s the framework of conquest. Fast, unbreakable, and scalable, his systems give IceShard the edge to stay ahead, crushing lag and competition alike.",
+      img: "img/Team/Ayush_1.jpg",
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        github: "#"
+      }
+    },
+    {
+      name: "Parth Latta",
+      role: "Editor/Manager",
+      faction: "Content Craftsmen ✍️📜",
+      description:
+        "Wordsmith. Storyteller. Commander of narratives. Parth weaves words into powerful weapons, shaping perception and inspiring loyalty. Every story he crafts is a strategic blow against mediocrity. He writes to conquer.",
+      img: "img/Team/parth.jpg",
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        github: "#"
+      }
+    }
+  ];
+  
+
   return (
-    <div className="team-container">
-      {/* Hero Section */}
+    <div className={`team-container ${isVisible ? 'visible' : ''}`}>
       <section className="team-hero">
-        <img 
-          src="img/latest_war_img_2.png" 
-          alt="Team Banner" 
-          className="team-hero-image"
-        />
-        <div className="team-hero-content">
-          <h1>Warriors of Innovation</h1>
-          <p>United in our mission to create extraordinary gaming experiences that push the boundaries of imagination.</p>
+        <div className="hero-content">
+          <h1>Elite Squad of Innovation</h1>
+          <p>United in our mission to revolutionize the gaming universe</p>
+          <div className="hero-stats">
+            <div className="stat-item">
+              <span className="stat-number">8+</span>
+              <span className="stat-label">Elite Members</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">5+</span>
+              <span className="stat-label">Projects</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">3+</span>
+              <span className="stat-label">Years Experience</span>
+            </div>
+          </div>
+        </div>
+        <div className="hero-overlay"></div>
+      </section>
+
+      <section className="team-grid-section">
+        <h2 className="section-title">Meet Our Warriors</h2>
+        <div className="team-grid">
+          {teamMembers.map((member, index) => (
+            <div 
+              key={index} 
+              className="team-card"
+              style={{ animationDelay: `${index * 1}s` }}
+            >
+              <div className="card-inner">
+                <div className="card-front">
+                  <div className="member-image">
+                    <img src={member.img} alt={member.name} />
+                    <div className="image-overlay"></div>
+                  </div>
+                  <div className="member-info">
+                    <h3>{member.name}</h3>
+                    <p className="role">{member.role}</p>
+                    <p className="faction">{member.faction}</p>
+                  </div>
+                </div>
+                <div className="card-back">
+                  <div className="back-content">
+                    <p className="description">{member.description}</p>
+                    <div className="social-links">
+                      <a href={member.social.twitter} className="social-icon">
+                        <i className="fab fa-twitter"></i>
+                      </a>
+                      <a href={member.social.linkedin} className="social-icon">
+                        <i className="fab fa-linkedin"></i>
+                      </a>
+                      <a href={member.social.github} className="social-icon">
+                        <i className="fab fa-github"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="team-stats">
-        <div className="stat-card">
-          <div className="stat-number">8+</div>
-          <div className="stat-label">Team Members</div>
+      <section className="join-section">
+        <div className="join-content">
+          <h2>Join the Elite Force</h2>
+          <p>Ready to push the boundaries of gaming innovation?</p>
+          <button className="join-button">Join Our Ranks</button>
         </div>
-        <div className="stat-card">
-          <div className="stat-number">5+</div>
-          <div className="stat-label">Projects Completed</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-number">3+</div>
-          <div className="stat-label">Years Experience</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-number">2+</div>
-          <div className="stat-label">Games in Development</div>
-        </div>
-      </section>
-
-      {/* Page Header */}
-      <section className="team-header">
-        <h1>Meet Our Elite Squad</h1>
-        <p>Each member brings unique talents to forge the future of gaming</p>
-      </section>
-
-      {/* Team Members Section */}
-      <section className="team-members">
-        <div className="member-card">
-          <img src="img/Team/ceo.jpg" alt="Nishant Latiyal" loading="lazy" />
-          <h3>Nishant Latiyal</h3>
-          <p className="role">Founder/CEO</p>
-          <p className="faction-name">The Overseers 👁️‍🗨️</p>
-          <p className="faction-description">
-            Visionary leader steering IceShard Games towards innovation and excellence.
-          </p>
-        </div>
-
-        <div className="member-card">
-          <img
-            src="img/Team/ayush_saini.jpg"
-            alt="Ayush Saini"
-            loading="lazy"
-          />
-          <h3>Ayush Saini</h3>
-          <p className="role">Co-founder/CFO</p>
-          <p className="faction-name">The Overseers 👁️‍🗨️</p>
-          <p className="faction-description">
-            Keeping resources balanced and the treasury secure.
-          </p>
-        </div>
-
-        <div className="member-card">
-          <img src="img/Team/shaswat.jpg" alt="Shashwat" loading="lazy" />
-          <h3>Shashwat</h3>
-          <p className="role">CMO</p>
-          <p className="faction-name">Marketing Maestros 🎯📢</p>
-          <p className="faction-description">
-            Spreading the word and rallying the troops for victory!
-          </p>
-        </div>
-
-        <div className="member-card">
-          <img src="img/Team/khwaish.jpg" alt="Khwaish Verma" loading="lazy" />
-          <h3>Khwaish Verma</h3>
-          <p className="role">Senior Graphic Designer</p>
-          <p className="faction-name">Visual Crusaders 🎨🖌️</p>
-          <p className="faction-description">
-            Creating stunning visuals to dazzle and inspire.
-          </p>
-        </div>
-
-        <div className="member-card">
-          <img src="img/Team/pranav.jpg" alt="Pranav Kapoor" loading="lazy" />
-          <h3>Pranav Kapoor</h3>
-          <p className="role">Senior Concept Artist</p>
-          <p className="faction-name">Visionary Artists 🖼️🔮</p>
-          <p className="faction-description">
-            Bringing ideas to life with creative magic.
-          </p>
-        </div>
-
-        <div className="member-card">
-          <img src="img/Team/aryan.jpg" alt="Aryan" loading="lazy" />
-          <h3>Aryan</h3>
-          <p className="role">VR/AR Specialist</p>
-          <p className="faction-name">Virtual Vanguard 🕶️🌐</p>
-          <p className="faction-description">
-            Crafting immersive worlds beyond imagination.
-          </p>
-        </div>
-
-        <div className="member-card">
-          <img src="img/Team/Ayush_1.jpg" alt="Ayush Pahuja" loading="lazy" />
-          <h3>Ayush Pahuja</h3>
-          <p className="role">Full-Stack Developer</p>
-          <p className="faction-name">Code Warriors 💻⚔️</p>
-          <p className="faction-description">
-            Building the backbone of our digital realm.
-          </p>
-        </div>
-
-        <div className="member-card">
-          <img src="img/Team/parth.jpg" alt="Parth Latta" loading="lazy" />
-          <h3>Parth Latta</h3>
-          <p className="role">Editor/Manager</p>
-          <p className="faction-name">Content Craftsmen ✍️📜</p>
-          <p className="faction-description">
-            Shaping stories and managing content with precision.
-          </p>
+        <div className="join-particles">
+          {[...Array(20)].map((_, i) => (
+            <div key={i} className="particle"></div>
+          ))}
         </div>
       </section>
     </div>
