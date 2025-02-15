@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../css/Header.css";
 
 const Header = () => {
@@ -7,7 +8,9 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo">
-        <img src="/logo.png" alt="Logo" />
+        <Link to="/">
+          <img src="/logo.png" alt="Logo" />
+        </Link>
       </div>
 
       {/* Hamburger Menu (Only Visible on Mobile) */}
@@ -19,21 +22,21 @@ const Header = () => {
       <nav className={`nav-menu ${menuOpen ? "active" : ""}`}>
         <ul>
           <li>
-            <a href="#">HOME</a>
+            <Link to="/">HOME</Link>
           </li>
           <li>
-            <a href="#">WHO ARE WE</a>
+            <Link to="/who-we-are">WHO ARE WE</Link>
           </li>
           <li>
-            <a href="#">WORK WITH US</a>
+            <Link to="/team">WORK WITH US</Link>
           </li>
           <li>
-            <a href="#">NEWS</a>
+            <Link to="/news">NEWS</Link>
           </li>
         </ul>
       </nav>
 
-      <button className="pre-register">Pre-Register</button>
+      <Link to="/pre-register" className="pre-register">Pre-Register</Link>
     </header>
   );
 };

@@ -1,0 +1,501 @@
+:root {
+  --primary-glow: #00eaff;
+  --secondary-glow: #007fff;
+  --dark-bg: #0a0a0a;
+  --card-bg: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #bbb;
+}
+
+.whoweare-container {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: var(--dark-bg);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.whoweare-hero {
+  position: relative;
+  height: 70vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+}
+
+.hero-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  filter: brightness(0.4);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  width: 90%;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: #00eaff;
+  text-shadow: 0 0 20px rgba(0, 238, 255, 0.5);
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: #fff;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cards-section {
+  display: flex;
+  gap: 2rem;
+  padding: 4rem max(5%, 20px);
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.vision-card, .mission-card {
+  flex: 1;
+  min-width: min(100%, 300px);
+  max-width: 600px;
+  background: linear-gradient(145deg, #1a1a1a, #222);
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.vision-card::before, .mission-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #00eaff, #007fff);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.vision-card:hover, .mission-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 238, 255, 0.2);
+}
+
+.vision-card:hover::before, .mission-card:hover::before {
+  transform: scaleX(1);
+}
+
+.card-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.vision-card h2, .mission-card h2 {
+  color: #00eaff;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.vision-card p, .mission-card p {
+  color: #bbb;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.values-section {
+  position: relative;
+  padding: 6rem max(5%, 20px);
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 2rem;
+}
+
+.values-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+  filter: brightness(0.4);
+}
+
+.values-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.values-content h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.value-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+  height: 100%;
+}
+
+.value-item:hover {
+  transform: translateY(-5px);
+}
+
+.value-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.value-item h3 {
+  color: #00eaff;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.value-item p {
+  color: #bbb;
+  font-size: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .cards-section {
+    padding: 3rem max(3%, 15px);
+  }
+  
+  .values-section {
+    padding: 4rem max(3%, 15px);
+  }
+  
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    width: 95%;
+  }
+  
+  .cards-section {
+    padding: 2rem 15px;
+    flex-direction: column;
+  }
+  
+  .vision-card, .mission-card {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .value-item {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .whoweare-hero {
+    height: 60vh;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+  
+  .vision-card, .mission-card {
+    padding: 1.5rem;
+  }
+}
+
+/* Banner Styles */
+.whoweare-banner {
+  position: relative;
+  height: 80vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 8s ease;
+}
+
+.whoweare-banner:hover .banner-image {
+  transform: scale(1.1);
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.7),
+    rgba(0, 234, 255, 0.2)
+  );
+  z-index: 1;
+}
+
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.banner-content h1 {
+  margin-bottom: 0.5rem;
+}
+
+/* Glowing Text Effect */
+.glowing-text {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  color: var(--primary-glow);
+  text-shadow: 0 0 10px rgba(0, 234, 255, 0.5),
+               0 0 20px rgba(0, 234, 255, 0.3),
+               0 0 30px rgba(0, 234, 255, 0.2);
+  margin-bottom: 1rem;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px rgba(0, 234, 255, 0.5),
+                 0 0 20px rgba(0, 234, 255, 0.3),
+                 0 0 30px rgba(0, 234, 255, 0.2);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(0, 234, 255, 0.6),
+                 0 0 30px rgba(0, 234, 255, 0.4),
+                 0 0 40px rgba(0, 234, 255, 0.3);
+  }
+}
+
+/* Cards Section */
+.cards-section {
+  display: flex;
+  gap: 2rem;
+  padding: 4rem max(5%, 20px);
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.hover-glow {
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.hover-glow:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px rgba(0, 234, 255, 0.2),
+              0 0 40px rgba(0, 234, 255, 0.1);
+}
+
+.card-glow, .item-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 0%, 
+              rgba(0, 234, 255, 0.2), 
+              transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.hover-glow:hover .card-glow,
+.hover-glow:hover .item-glow {
+  opacity: 1;
+}
+
+/* Pulse Animation for Icons */
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Value Items */
+.value-item {
+  background: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 234, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.value-item:hover {
+  border-color: rgba(0, 234, 255, 0.3);
+  background: rgba(26, 26, 26, 0.9);
+}
+
+.value-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.value-item:hover .value-icon {
+  transform: scale(1.2);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .whoweare-banner {
+    height: 60vh;
+  }
+  
+  .cards-section {
+    padding: 2rem 15px;
+    flex-direction: column;
+  }
+  
+  .value-item {
+    margin: 0.5rem;
+  }
+}
+
+/* Add these new styles for the typing animation */
+.typing-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.static-text {
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  color: var(--text-primary);
+}
+
+.typing-text {
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  color: var(--primary-glow);
+  position: relative;
+  white-space: nowrap;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(0, 234, 255, 0.3);
+}
+
+.typing-text::after {
+  content: '|';
+  position: absolute;
+  right: -8px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Update banner content styles */
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.banner-content h1 {
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .typing-container {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .static-text, .typing-text {
+    font-size: 1.1rem;
+  }
+} 
