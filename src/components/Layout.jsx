@@ -6,6 +6,7 @@ import WhoWeAre from "../Pages/WhoWeAre";
 import PreRegister from "../Pages/PreRegister";
 import News from "../Pages/News";
 import ArticleDetail from "../Pages/ArticleDetail";
+import Careers from "../Pages/Careers";
 
 const Layout = ({ page }) => {
   const renderPage = () => {
@@ -20,6 +21,8 @@ const Layout = ({ page }) => {
         return <News />;
       case "article":
         return <ArticleDetail />;
+      case "careers":
+        return <Careers />;
       default:
         return <Home />;
     }

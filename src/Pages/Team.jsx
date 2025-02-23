@@ -1,13 +1,31 @@
 import { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { FaLinkedinIn, FaTwitter, FaGithub, FaInstagram } from 'react-icons/fa';
 import "../css/Team.css";
 
+
 const Team = () => {
   const [isVisible, setIsVisible] = useState(false);
-
+  const [currentText, setCurrentText] = useState(0);
+  const texts = [
+    "Elite Squad of Innovation",
+    "Digital Warriors",
+    "Future Shapers",
+    "Tech Revolutionaries",
+    "Game Changers"
+  ];
+  const navigate = useNavigate();
   useEffect(() => {
     setIsVisible(true);
+    const interval = setInterval(() => {
+      setCurrentText((prev) => (prev + 1) % texts.length);
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
 
   const teamMembers = [
     {
@@ -113,6 +131,19 @@ const Team = () => {
         twitter: "#",
         github: "#"
       }
+    },
+    {
+      name: "Mehul Sharma",
+      role: "3D Generalist",
+      faction: "Content Craftsmen ✍️📜",
+      description:
+        "Wordsmith. Storyteller. Commander of narratives. Parth weaves words into powerful weapons, shaping perception and inspiring loyalty. Every story he crafts is a strategic blow against mediocrity. He writes to conquer.",
+      img: "img/Team/Mehul.jpg",
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        github: "#"
+      }
     }
   ];
   
@@ -146,7 +177,9 @@ const Team = () => {
     <div className={`team-container ${isVisible ? 'visible' : ''}`}>
       <section className="team-hero">
         <div className="hero-content">
-          <h1>Elite Squad of Innovation</h1>
+          <h1 className="glitch-text" data-text={texts[currentText]}>
+            {texts[currentText]}
+          </h1>
           <p>United in our mission to revolutionize the gaming universe</p>
           <div className="hero-stats">
             <div className="stat-item">
@@ -203,13 +236,17 @@ const Team = () => {
         <div className="join-content">
           <h2>Join the Elite Force</h2>
           <p>Ready to push the boundaries of gaming innovation?</p>
-          <button className="join-button">Join Our Ranks</button>
+          <button className="join-button"
+          onClick={() => handleNavigation('/careers')}
+          >Join Our Ranks</button>
         </div>
         <div className="join-particles">
           {[...Array(20)].map((_, i) => (
             <div key={i} className="particle"></div>
           ))}
         </div>
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.69/build/spline-viewer.js"></script>
+<spline-viewer url="https://prod.spline.design/dy600JwHM8i4HNP5/scene.splinecode"></spline-viewer>
       </section>
     </div>
   );

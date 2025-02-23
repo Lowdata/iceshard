@@ -12,6 +12,7 @@ function App() {
         <Route path="/pre-register" element={<Layout page="pre-register" />} />
         <Route path="/news" element={<Layout page="news" />} />
         <Route path="/news/:articleId" element={<Layout page="article" />} />
+        <Route path="/careers" element={<Layout page="careers" />} />
       </Routes>
     </Router>
   );

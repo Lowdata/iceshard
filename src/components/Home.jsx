@@ -221,7 +221,9 @@ const Home = () => {
               <p>Global Offices</p>
             </div>
           </div>
-          <button className="explore-careers">Explore Careers</button>
+          <button className="explore-careers"
+          onClick={() => handleNavigation('/careers')}
+          >Explore Careers</button>
         </div>
       </section>
 

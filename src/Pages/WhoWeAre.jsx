@@ -15,6 +15,9 @@ const WhoWeAre = () => {
     "to Build the Future"
   ];
 
+  const visionText = "We envision a future where technology enhances human experiences in ways that are inclusive, immersive, and impactful.";
+  const missionText = "Our mission is to build a thriving ecosystem where players, creators, and innovators come together.";
+
   useEffect(() => {
     let ticker = setInterval(() => {
       tick();
@@ -37,7 +40,7 @@ const WhoWeAre = () => {
 
     if (!isDeleting && updatedText === currentWord) {
       setIsDeleting(true);
-      setDelta(2000); // Pause at end of word
+      setDelta(2000);
     } else if (isDeleting && updatedText === '') {
       setIsDeleting(false);
       setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
@@ -56,10 +59,10 @@ const WhoWeAre = () => {
           className="banner-image"
         />
         <div className="banner-content">
-          <h1 className="glowing-text">Who We Are</h1>
+          <h1 className="glitch-text" data-text="Who We Are">Who We Are</h1>
           <div className="typing-container">
             <p className="static-text">We're here</p>
-            <p className="typing-text">{text}</p>
+            <p className="glitch-text typing-text" data-text={text}>{text}</p>
           </div>
         </div>
       </section>
@@ -68,18 +71,18 @@ const WhoWeAre = () => {
       <section className="cards-section">
         <div className="vision-card hover-glow">
           <div className="card-icon pulse">👁️</div>
-          <h2>Our Vision</h2>
+          <h2 className="glitch-text" data-text="Our Vision">Our Vision</h2>
           <div className="card-content">
-            <p>We envision a future where technology enhances human experiences in ways that are inclusive, immersive, and impactful. FusionVR embodies this vision by merging the power of gaming, education, and social interaction into one dynamic virtual universe. Our goal is to make VR accessible and enjoyable for all, transforming how people engage with digital environments.</p>
+            <p className="cyber-text">{visionText}</p>
           </div>
           <div className="card-glow"></div>
         </div>
 
         <div className="mission-card hover-glow">
           <div className="card-icon pulse">🎯</div>
-          <h2>Our Mission</h2>
+          <h2 className="glitch-text" data-text="Our Mission">Our Mission</h2>
           <div className="card-content">
-            <p>Our mission at IceShard Games is to build a thriving ecosystem where players, creators, and innovators come together to explore boundless possibilities. By integrating cutting-edge technology like Unreal Engine 5, we provide tools that empower users to customize their experiences and redefine what's possible in virtual worlds.</p>
+            <p className="cyber-text">{missionText}</p>
           </div>
           <div className="card-glow"></div>
         </div>
@@ -88,7 +91,7 @@ const WhoWeAre = () => {
       {/* Values Section */}
       <section className="values-section">
         <div className="values-content">
-          <h2 className="glowing-text">Our Core Values</h2>
+          <h2 className="glitch-text section-title" data-text="Our Core Values">Our Core Values</h2>
           <div className="values-grid">
             {[
               { icon: "🎮", title: "Innovation", desc: "Pushing boundaries in gaming technology" },
@@ -98,7 +101,7 @@ const WhoWeAre = () => {
             ].map((value, index) => (
               <div key={index} className="value-item hover-glow">
                 <span className="value-icon pulse">{value.icon}</span>
-                <h3>{value.title}</h3>
+                <h3 className="cyber-text">{value.title}</h3>
                 <p>{value.desc}</p>
                 <div className="item-glow"></div>
               </div>

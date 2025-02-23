@@ -5,7 +5,7 @@
   height: 103px;
   left: 0;
   top: 0;
-  background: #069494;
+  background: #0a4747;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -17,8 +17,8 @@
 
 /* Logo */
 .logo img {
-  width: 65px;
-  height: 98px;
+  width: 140px;
+  height: 140px;
 }
 
 /* Navigation Menu (Default for Full Screen) */
@@ -51,27 +51,66 @@
   color: #ffffff;
 }
 
-/* Pre-Register Button */
+/* Update Pre-Register Button */
 .pre-register {
-  width: 214px;
-  height: 68px;
-  background: rgba(60, 60, 67, 0.18);
-  border: none;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1), 0px 0px 0px 1px rgba(0, 0, 0, 0.02);
-  border-radius: 100px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  color: #FFFFFF;
+  width: 180px;
+  height: 55px;
+  background: rgba(0, 234, 255, 0.1);
+  border: 2px solid var(--primary);
+  border-radius: 30px;
+  font-family: var(--font-cyber);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.pre-register:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0, 234, 255, 0.2),
+    transparent
+  );
+  transition: all 0.6s;
 }
 
 .pre-register:hover {
-  background: rgba(60, 60, 67, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px rgba(0, 234, 255, 0.3);
+  background: rgba(0, 234, 255, 0.15);
+  color: #fff;
+}
+
+.pre-register:hover:before {
+  left: 100%;
+}
+
+.pre-register:active {
+  transform: translateY(0);
+}
+
+/* Update responsive styles for pre-register */
+@media (max-width: 1024px) {
+  .pre-register {
+    width: 150px;
+    height: 45px;
+    font-size: 14px;
+  }
 }
 
 /* Add these new styles */
@@ -132,18 +171,6 @@
     flex-direction: column;
     gap: 15px;
     padding: 0;
-  }
-
-  .pre-register {
-    width: 160px;
-    height: 55px;
-    font-size: 13px;
-  }
-
-  /* Ensure menu is visible when header is hidden */
-  .header-hidden .nav-menu.active {
-    opacity: 1;
-    transform: translateY(103px);
   }
 }
 

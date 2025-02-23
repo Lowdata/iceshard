@@ -22,10 +22,12 @@ const Header = () => {
   }, [prevScrollPos]);
 
   return (
-    <header className={`header ${visible ? 'header-visible' : 'header-hidden'}`}>
+    <header
+      className={`header ${visible ? "header-visible" : "header-hidden"}`}
+    >
       <div className="logo">
         <Link to="/">
-          <img src="/logo.png" alt="Logo" />
+          <img src="img/logos/default_logo.png" alt="Logo" />
         </Link>
       </div>
 
@@ -41,7 +43,7 @@ const Header = () => {
             <Link to="/">HOME</Link>
           </li>
           <li>
-            <Link to="/who-we-are">WHO ARE WE</Link>
+            <Link to="/who-we-are">WHO WE ARE</Link>
           </li>
           <li>
             <Link to="/team">WORK WITH US</Link>
@@ -52,7 +54,9 @@ const Header = () => {
         </ul>
       </nav>
 
-      <Link to="/pre-register" className="pre-register">Pre-Register</Link>
+      <Link to="/pre-register" className="pre-register">
+        Pre-Register
+      </Link>
     </header>
   );
 };

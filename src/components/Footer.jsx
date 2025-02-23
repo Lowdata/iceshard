@@ -11,7 +11,7 @@ const Footer = () => (
                 <a href="/" className="footer_logo_iner">
                   {" "}
                   <img
-                    src="logo.png"
+                    src="img/logos/default_logo.png"
                     alt="logo"
                     loading="lazy"
                     className="-img"
@@ -33,15 +33,11 @@ const Footer = () => (
                 <p>Email : contact@iceshardgames.com</p>
               </div>
             </div>
-            <div className="col-sm-6 col-lg-3">
-            </div>
-            <div className="col-sm-6 col-lg-3">
-             
-                
-                </div>
-              </div>
-            </div>
+            <div className="col-sm-6 col-lg-3"></div>
+            <div className="col-sm-6 col-lg-3"></div>
           </div>
+        </div>
+      </div>
       <div className="copygight_text">
         <div className="container">
           <div className="row align-items-center">
