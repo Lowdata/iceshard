@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import "../css/Home.css";
+import { blogPosts } from '../data/blogs';
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,27 +24,6 @@ const Home = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const blogPosts = [
-    {
-      title: "Project Nexus Development Update",
-      excerpt: "Exploring the latest features and innovations in our upcoming VR experience.",
-      image: "img/event_bg.png",
-      category: "Development"
-    },
-    {
-      title: "The Future of Gaming Technology",
-      excerpt: "How we're pushing boundaries with next-generation gaming experiences.",
-      image: "img/live_streams_1.png",
-      category: "Technology"
-    },
-    {
-      title: "Community Spotlight",
-      excerpt: "Highlighting amazing creations from our growing community.",
-      image: "img/gallery/gallery_item_5.png",
-      category: "Community"
-    }
-  ];
-
   return (
     <div className={`home-container ${isVisible ? 'visible' : ''}`}>
       <section className="hero-section">
@@ -55,13 +35,16 @@ const Home = () => {
         <div className="hero-content-wrapper">
           <div className="hero-text-content">
             <h1 className="mega-glitch-text" data-text="IceShard Games">IceShard Games</h1>
+            <h2 className="cyber-glitch-text main-subtitle" data-text="Create Beyond Reality">
+              Create Beyond Reality
+            </h2>
             <div className="animated-subtitle">
-              <span className="cyber-glitch-text" data-text={texts[currentText]}>
+              <span className="cyber-glitch-text changing-text" data-text={texts[currentText]}>
                 {texts[currentText]}
               </span>
             </div>
             <p className="hero-description">
-              Crafting immersive digital experiences that push the boundaries of gaming technology
+              Step into a world where imagination knows no bounds. Join us in crafting the future of gaming.
             </p>
           </div>
 
@@ -93,21 +76,27 @@ const Home = () => {
 
       <section className="blog-section">
         <h2 className="section-title glitch-text" data-text="Latest Updates">Latest Updates</h2>
-        <div className="blog-grid">
-          {blogPosts.map((post, index) => (
-            <div key={index} className="blog-card">
-              <div className="blog-image">
-                <img src={post.image} alt={post.title} />
-                <div className="image-overlay"></div>
+        <div className="news-list">
+          {blogPosts.map((news, index) => (
+            <Link 
+              to={`/news/${news.id}`} 
+              key={index} 
+              className="news-item"
+            >
+              <div className="news-item-image">
+                <img src={news.image} alt={news.title} />
               </div>
-              <div className="blog-content">
-                <span className="blog-category">{post.category}</span>
-                <h3 className="blog-title">{post.title}</h3>
-                <p className="blog-excerpt">{post.excerpt}</p>
-                <button className="read-more">Read More</button>
+              <div className="news-item-content">
+                <div>
+                  <h3>{news.title}</h3>
+                  <p>{news.excerpt.substring(0, 100)}...</p>
+                </div>
+                <div className="news-meta">
+                  <span className="news-category">{news.category}</span>
+                  <span className="news-date">{news.date}</span>
+                </div>
               </div>
-              <div className="card-glitch-effect"></div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

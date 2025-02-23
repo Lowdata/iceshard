@@ -2,39 +2,16 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import LoadingScreen from '../components/LoadingScreen';
 import "../css/News.css";
+import { blogPosts } from '../data/blogs';
 
 const News = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Dummy data - replace with API call
   useEffect(() => {
-    // Simulate API fetch
+    // Simulate API fetch delay
     setTimeout(() => {
-      setArticles([
-        {
-          id: 1,
-          title: "The Future of Gaming: IceShard's Vision for 2024",
-          author: "Sarah Chen",
-          date: "2024-01-15",
-          readTime: "8 min read",
-          category: "Development",
-          featured: true,
-          thumbnail: "/img/live_stareams_bg.png",
-          excerpt: "Discover how we're pushing the boundaries of virtual reality and creating new ways to experience games."
-        },
-        {
-          id: 2,
-          title: "Revolutionizing Player Experience",
-          author: "Mike Johnson",
-          date: "2024-01-10",
-          readTime: "6 min read",
-          category: "Technology",
-          thumbnail: "/img/banner_img.png",
-          excerpt: "Exploring new ways to enhance player immersion through cutting-edge technology."
-        },
-        // Add more articles...
-      ]);
+      setArticles(blogPosts); // Use the imported blogPosts directly
       setLoading(false);
     }, 1000);
   }, []);
@@ -45,21 +22,25 @@ const News = () => {
 
   return (
     <div className="news-container">
-      {/* Hero Section */}
-      <section className="news-hero">
+      {/* Hero Section with background image */}
+      <section 
+        className="news-hero" 
+        style={{ backgroundImage: "url('/img/live_stareams_bg.png')" }}
+      >
         <h1>Latest Updates</h1>
         <p>Stay informed about the latest developments at IceShard Games</p>
       </section>
 
+      {/* Articles Grid */}
       <section className="articles-grid">
         {articles.map((article) => (
-          <Link 
-            to={`/news/${article.id}`} 
-            key={article.id} 
+          <Link
+            to={`/news/${article.id}`}
+            key={article.id}
             className={`article-preview ${article.featured ? 'featured' : ''}`}
           >
             <div className="preview-image">
-              <img src={article.thumbnail} alt={article.title} />
+              <img src={article.image} alt={article.title} />
               <div className="image-overlay"></div>
             </div>
             <div className="preview-content">
@@ -68,9 +49,10 @@ const News = () => {
                 <span className="date">{article.date}</span>
               </div>
               <h2>{article.title}</h2>
+              {article.subtitle && <h3 className="subtitle">{article.subtitle}</h3>}
               <p>{article.excerpt}</p>
               <div className="preview-footer">
-                <span className="author">By {article.author}</span>
+                <span className="author">By {article.author.name}</span>
                 <span className="read-time">{article.readTime}</span>
               </div>
             </div>
@@ -81,4 +63,4 @@ const News = () => {
   );
 };
 
-export default News; 
+export default News;

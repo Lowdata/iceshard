@@ -353,6 +353,21 @@
   );
 }
 
+/* Article Banner Image */
+.article-banner-image {
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+.article-banner-image img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 0 20px rgba(0, 234, 255, 0.3);
+}
+
+
 .hero-content {
   position: relative;
   z-index: 1;
