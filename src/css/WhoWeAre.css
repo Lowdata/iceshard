@@ -530,11 +530,13 @@
   padding: 0 5%;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(45deg, rgba(0,0,0,0.9), rgba(0,234,255,0.05));
 }
 
 .hero-content {
   width: 50%;
   z-index: 2;
+  position: relative;
 }
 
 .mega-glitch-text {
@@ -738,18 +740,122 @@
 
 /* Update text sizes and animations */
 .typing-container {
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   margin-top: 2rem;
+  font-family: var(--font-cyber);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.typing-container::after {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  width: 5px;
+  height: 50%;
+  background: var(--primary);
+  transform: translateY(-50%);
 }
 
 .static-text {
   color: var(--text-secondary);
-  margin-right: 1rem;
+  opacity: 0.8;
 }
 
-.glitch-text {
+.typing-text {
   color: var(--primary);
   text-shadow: 0 0 10px rgba(0, 234, 255, 0.3);
+  position: relative;
+  animation: textGlow 2s infinite alternate;
+}
+
+/* Add decorative elements */
+.hero-decorations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.cyber-line {
+  position: absolute;
+  background: rgba(0, 234, 255, 0.1);
+}
+
+.cyber-line.horizontal {
+  height: 1px;
+  width: 100%;
+  animation: horizontalScan 15s linear infinite;
+}
+
+.cyber-line.vertical {
+  width: 1px;
+  height: 100%;
+  animation: verticalScan 20s linear infinite;
+}
+
+.cyber-dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(0, 234, 255, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: dotsFloat 10s linear infinite;
+}
+
+/* Add new animations */
+@keyframes textGlow {
+  from {
+    text-shadow: 0 0 10px rgba(0, 234, 255, 0.3);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(0, 234, 255, 0.6),
+                 0 0 40px rgba(0, 234, 255, 0.4);
+  }
+}
+
+@keyframes horizontalScan {
+  0% {
+    transform: translateY(-100%) scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(50%) scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(200%) scaleX(0);
+    opacity: 0;
+  }
+}
+
+@keyframes verticalScan {
+  0% {
+    transform: translateX(-100%) scaleY(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(50%) scaleY(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(200%) scaleY(0);
+    opacity: 0;
+  }
+}
+
+@keyframes dotsFloat {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-30px);
+  }
 }
 
 /* Add new content sections */

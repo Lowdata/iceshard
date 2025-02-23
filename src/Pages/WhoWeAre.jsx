@@ -53,11 +53,16 @@ const WhoWeAre = () => {
   return (
     <div className={`whoweare-container ${isVisible ? 'visible' : ''}`}>
       <section className="hero-section">
+        <div className="hero-decorations">
+          <div className="cyber-dots"></div>
+          <div className="cyber-line horizontal"></div>
+          <div className="cyber-line vertical"></div>
+        </div>
         <div className="hero-content">
           <h1 className="mega-glitch-text" data-text="Who We Are">Who We Are</h1>
           <div className="typing-container">
             <span className="static-text">We Are</span>
-            <span className="glitch-text" data-text={text}>{text}</span>
+            <span className="typing-text" data-text={text}>{text}</span>
           </div>
         </div>
         <div className="hero-visual">
