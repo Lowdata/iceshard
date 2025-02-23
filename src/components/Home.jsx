@@ -196,12 +196,12 @@ const Home = () => {
           <p>Join IceShard Games to shape the future of VR and create unforgettable experiences.</p>
           <div className="hiring-stats">
             <div className="stat-box">
-              <div className="stat-number">138</div>
+              <div className="stat-number">8</div>
               <p>Open Positions</p>
             </div>
             <div className="stat-box">
               <div className="stat-number">25</div>
-              <p>Global Offices</p>
+              <p>Coming Soon</p>
             </div>
           </div>
           <button className="explore-careers"
