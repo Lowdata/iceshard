@@ -220,4 +220,240 @@
   .position-meta span {
     font-size: 0.8rem;
   }
+}
+
+/* Add these new styles for glitch effects and modal */
+
+.glitch-text {
+  position: relative;
+  color: var(--primary);
+  text-shadow: 0 0 10px rgba(0, 234, 255, 0.5);
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip: rect(0, 0, 0, 0);
+}
+
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff00c1;
+  animation: glitch-1 2s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  left: -2px;
+  text-shadow: 2px 0 #00fff9;
+  animation: glitch-2 3s infinite linear alternate-reverse;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2001;
+}
+
+.application-modal {
+  background: var(--card-bg);
+  border: 1px solid rgba(0, 234, 255, 0.2);
+  border-radius: 15px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  animation: modalEnter 0.3s ease-out;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  color: #ff00c1;
+  transform: scale(1.1);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.glitch-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+  font-family: var(--font-cyber);
+  position: relative;
+}
+
+.cyber-input {
+  width: 100%;
+  padding: 0.8rem;
+  background: rgba(0, 234, 255, 0.1);
+  border: 1px solid rgba(0, 234, 255, 0.3);
+  border-radius: 5px;
+  color: var(--text-primary);
+  font-family: var(--font-cyber);
+  transition: all 0.3s ease;
+}
+
+.cyber-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 10px rgba(0, 234, 255, 0.2);
+}
+
+.submit-button {
+  width: 100%;
+  padding: 1rem;
+  background: var(--primary);
+  border: none;
+  border-radius: 5px;
+  color: var(--background);
+  font-family: var(--font-cyber);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+  background: #ff00c1;
+  transform: translateY(-2px);
+}
+
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add glitch animation keyframes */
+@keyframes glitch-1 {
+  0% { clip: rect(20px, 9999px, 21px, 0); }
+  10% { clip: rect(83px, 9999px, 95px, 0); }
+  /* ... rest of your glitch animation ... */
+}
+
+@keyframes glitch-2 {
+  0% { clip: rect(32px, 9999px, 15px, 0); }
+  10% { clip: rect(77px, 9999px, 36px, 0); }
+  /* ... rest of your glitch animation ... */
+}
+
+/* Add these styles for confetti overlay */
+canvas {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  pointer-events: none;
+}
+
+/* Add success animation for the submit button */
+.submit-button.success {
+  background: #00ff88;
+  animation: successPulse 1s infinite;
+}
+
+@keyframes successPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
+  }
+}
+
+/* Add success message styles */
+.success-message {
+  text-align: center;
+  padding: 2rem 1rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.success-icon {
+  font-size: 3rem;
+  color: #00ff88;
+  margin-bottom: 1rem;
+  animation: successIconScale 0.5s ease-out;
+}
+
+.success-message h4 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-family: var(--font-cyber);
+}
+
+.success-message p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Add loading state for submit button */
+.submit-button.submitting {
+  background: #7700ff;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes successIconScale {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 } 

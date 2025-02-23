@@ -15,11 +15,35 @@ const Team = () => {
     "Game Changers"
   ];
   const navigate = useNavigate();
+  const [numbers, setNumbers] = useState({
+    members: 0,
+    projects: 0,
+    years: 0
+  });
+
   useEffect(() => {
     setIsVisible(true);
     const interval = setInterval(() => {
       setCurrentText((prev) => (prev + 1) % texts.length);
     }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const targetNumbers = {
+      members: 8,
+      projects: 5,
+      years: 3
+    };
+
+    const interval = setInterval(() => {
+      setNumbers(prev => ({
+        members: prev.members < targetNumbers.members ? prev.members + 1 : prev.members,
+        projects: prev.projects < targetNumbers.projects ? prev.projects + 1 : prev.projects,
+        years: prev.years < targetNumbers.years ? prev.years + 1 : prev.years
+      }));
+    }, 200);
+
     return () => clearInterval(interval);
   }, []);
 
@@ -36,8 +60,8 @@ const Team = () => {
         "Visionary. Strategist. Mastermind. Nishant is the architect behind IceShard Games' meteoric rise. With unyielding determination and razor-sharp foresight, he leads the charge, breaking boundaries and setting new standards. Failure isn't an option—only dominance.",
       img: "img/Team/ceo.jpg",
       social: {
-        linkedin: "#",
-        twitter: "#",
+        linkedin: "https://www.linkedin.com/in/nishant-latiyal-9a40b3310/",
+        twitter: "https://x.com/NishantLatiyal",
         github: "#"
       }
     },
@@ -115,8 +139,8 @@ const Team = () => {
       img: "img/Team/Ayush_1.jpg",
       social: {
         linkedin: "#",
-        twitter: "#",
-        github: "#"
+        twitter: "https://x.com/AyushPahuja",
+        github: "https://github.com/Lowdata"
       }
     },
     {
@@ -150,26 +174,60 @@ const Team = () => {
 
   const renderSocialIcons = (social) => (
     <div className="social-links">
-      {social.linkedin && (
+      {social.linkedin && social.linkedin !== "#" && (
         <a href={social.linkedin} className="social-icon" target="_blank" rel="noopener noreferrer">
           <FaLinkedinIn />
         </a>
       )}
-      {social.twitter && (
+      {social.twitter && social.twitter !== "#" && (
         <a href={social.twitter} className="social-icon" target="_blank" rel="noopener noreferrer">
           <FaTwitter />
         </a>
       )}
-      {social.github && (
+      {social.github && social.github !== "#" && (
         <a href={social.github} className="social-icon" target="_blank" rel="noopener noreferrer">
           <FaGithub />
         </a>
       )}
-      {social.instagram && (
+      {social.instagram && social.instagram !== "#" && (
         <a href={social.instagram} className="social-icon" target="_blank" rel="noopener noreferrer">
           <FaInstagram />
         </a>
       )}
+    </div>
+  );
+
+  const renderCard = (member, index) => (
+    <div 
+      key={index} 
+      className="team-card"
+      style={{ animationDelay: `${index * 0.2}s` }}
+    >
+      <div className="card-inner">
+        <div className="card-front">
+          <div className="member-image">
+            <img src={member.img} alt={member.name} />
+            <div className="image-overlay"></div>
+          </div>
+          <div className="member-info">
+            <h3 className="glitch-text" data-text={member.name}>{member.name}</h3>
+            <p className="role">{member.role}</p>
+            <p className="faction">{member.faction}</p>
+          </div>
+        </div>
+        <div className="card-back">
+          <div className="back-content">
+            <div className="watermark">
+              <img src="img/logos/watermark_logo" alt="IceShard Logo" />
+            </div>
+            <h3 className="glitch-text" data-text={`${member.name} | ${member.role}`}>
+              {member.name} | {member.role}
+            </h3>
+            <p className="description">{member.description}</p>
+            {renderSocialIcons(member.social)}
+          </div>
+        </div>
+      </div>
     </div>
   );
 
@@ -183,15 +241,21 @@ const Team = () => {
           <p>United in our mission to revolutionize the gaming universe</p>
           <div className="hero-stats">
             <div className="stat-item">
-              <span className="stat-number">8+</span>
+              <span className="stat-number glitch-number" data-value={numbers.members}>
+                {numbers.members}+
+              </span>
               <span className="stat-label">Elite Members</span>
             </div>
             <div className="stat-item">
-              <span className="stat-number">5+</span>
+              <span className="stat-number glitch-number" data-value={numbers.projects}>
+                {numbers.projects}+
+              </span>
               <span className="stat-label">Projects</span>
             </div>
             <div className="stat-item">
-              <span className="stat-number">3+</span>
+              <span className="stat-number glitch-number" data-value={numbers.years}>
+                {numbers.years}+
+              </span>
               <span className="stat-label">Years Experience</span>
             </div>
           </div>
@@ -200,35 +264,11 @@ const Team = () => {
       </section>
 
       <section className="team-grid-section">
-        <h2 className="section-title">Meet Our Warriors</h2>
+        <h2 className="section-title glitch-text" data-text="Meet Our Warriors">
+          Meet Our Warriors
+        </h2>
         <div className="team-grid">
-          {teamMembers.map((member, index) => (
-            <div 
-              key={index} 
-              className="team-card"
-              style={{ animationDelay: `${index * 1}s` }}
-            >
-              <div className="card-inner">
-                <div className="card-front">
-                  <div className="member-image">
-                    <img src={member.img} alt={member.name} />
-                    <div className="image-overlay"></div>
-                  </div>
-                  <div className="member-info">
-                    <h3>{member.name}</h3>
-                    <p className="role">{member.role}</p>
-                    <p className="faction">{member.faction}</p>
-                  </div>
-                </div>
-                <div className="card-back">
-                  <div className="back-content">
-                    <p className="description">{member.description}</p>
-                    {renderSocialIcons(member.social)}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+          {teamMembers.map((member, index) => renderCard(member, index))}
         </div>
       </section>
 

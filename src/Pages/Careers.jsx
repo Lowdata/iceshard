@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import ReactConfetti from 'react-confetti';
 import "../css/Careers.css";
 
 const Careers = () => {
@@ -6,6 +7,19 @@ const Careers = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(200);
+  const [showModal, setShowModal] = useState(false);
+  const [applicationData, setApplicationData] = useState({
+    name: '',
+    resumeLink: '',
+    position: ''
+  });
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const words = [
     "Shape the Future",
@@ -112,8 +126,62 @@ const Careers = () => {
     }
   };
 
+  // Add window resize handler
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const handleApply = (position) => {
+    setApplicationData(prev => ({ ...prev, position: position }));
+    setShowModal(true);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate submission
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setShowSuccess(true);
+      setShowConfetti(true);
+      
+      // Hide success message and modal after delay
+      setTimeout(() => {
+        setShowModal(false);
+        setApplicationData({ name: '', resumeLink: '', position: '' });
+        setShowSuccess(false);
+        
+        // Stop confetti after a few more seconds
+        setTimeout(() => {
+          setShowConfetti(false);
+        }, 3000);
+      }, 2000);
+    }, 1000);
+  };
+
   return (
     <div className="careers-container">
+      {/* Add Confetti component */}
+      {showConfetti && (
+        <ReactConfetti
+          width={windowSize.width}
+          height={windowSize.height}
+          recycle={false}
+          numberOfPieces={200}
+          gravity={0.2}
+          colors={['#00eaff', '#ff00c1', '#7700ff', '#00ff88']}
+        />
+      )}
+
       {/* Hero Banner */}
       <section className="careers-banner">
         <div className="banner-overlay"></div>
@@ -123,17 +191,17 @@ const Careers = () => {
           className="banner-image"
         />
         <div className="banner-content">
-          <h1 className="glowing-text">Join Our Elite Team</h1>
+          <h1 className="glitch-text" data-text="Join Our Elite Team">Join Our Elite Team</h1>
           <div className="typing-container">
             <p className="static-text">Ready to</p>
-            <p className="typing-text">{text}</p>
+            <p className="glitch-text typing-text" data-text={text}>{text}</p>
           </div>
         </div>
       </section>
 
       {/* Open Positions */}
       <section className="positions-section">
-        <h2 className="section-title glowing-text">Open Positions</h2>
+        <h2 className="section-title glitch-text" data-text="Open Positions">Open Positions</h2>
         <div className="positions-grid">
           {openPositions.map((position, index) => (
             <div key={index} className="position-card hover-glow">
@@ -162,7 +230,12 @@ const Careers = () => {
                     ))}
                   </ul>
                 </div>
-                <button className="apply-button">Apply Now</button>
+                <button 
+                  className="apply-button"
+                  onClick={() => handleApply(position.title)}
+                >
+                  Apply Now
+                </button>
               </div>
             </div>
           ))}
@@ -192,6 +265,73 @@ const Careers = () => {
           ))}
         </div>
       </section>
+
+      {/* Updated Modal */}
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="application-modal">
+            <div className="modal-header">
+              <h3 className="glitch-text" data-text="Submit Application">
+                {showSuccess ? "Application Received!" : "Submit Application"}
+              </h3>
+              <button 
+                className="close-button" 
+                onClick={() => setShowModal(false)}
+                disabled={isSubmitting}
+              >×</button>
+            </div>
+            {showSuccess ? (
+              <div className="success-message">
+                <div className="success-icon">✓</div>
+                <h4 className="glitch-text" data-text="Thank you for applying!">
+                  Thank you for applying!
+                </h4>
+                <p>We'll review your application and connect with you shortly.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label className="glitch-label" data-text="Position">Position</label>
+                  <input 
+                    type="text" 
+                    value={applicationData.position} 
+                    readOnly 
+                    className="cyber-input"
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="glitch-label" data-text="Full Name">Full Name</label>
+                  <input 
+                    type="text" 
+                    value={applicationData.name}
+                    onChange={(e) => setApplicationData(prev => ({ ...prev, name: e.target.value }))}
+                    className="cyber-input"
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="glitch-label" data-text="Resume Link">Resume Link</label>
+                  <input 
+                    type="url" 
+                    value={applicationData.resumeLink}
+                    onChange={(e) => setApplicationData(prev => ({ ...prev, resumeLink: e.target.value }))}
+                    className="cyber-input"
+                    required
+                    placeholder="https://drive.google.com/..."
+                  />
+                </div>
+                <button 
+                  type="submit" 
+                  className={`submit-button glitch-button ${isSubmitting ? 'submitting' : ''}`}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Submitting...' : 'Submit Application'}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
