@@ -135,7 +135,9 @@ const Home = () => {
                 className="news-item hover-glow"
               >
                 <h3>{news.title}</h3>
-                <p>{news.type}</p>
+                
+                
+                <img className="news-item-image" src={news.image} alt={news.title} />
                 
                 <div className="news-hover-effect"></div>
               </Link>
