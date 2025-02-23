@@ -1,6 +1,7 @@
 import "../css/Home.css"; // Import styles
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, Link } from 'react-router-dom';
+import { blogPosts } from "../data/blogs";
 
 const Home = () => {
   const observerRef = useRef(null);
@@ -127,28 +128,7 @@ const Home = () => {
           </div>
 
           <div className="news-list">
-            {[
-              {
-                id: 1,
-                title: "Update on the Southern California Wildfires & Our Fundraiser",
-                type: "News"
-              },
-              {
-                id: 2,
-                title: "Riot Tech Blog: Improving Performance by Streamlining League's Engine",
-                type: "Blog"
-              },
-              {
-                id: 3,
-                title: "Fortune Favors the Hungry | Mini Cinematic - Teamfight Tactics",
-                type: "Video"
-              },
-              {
-                id: 4,
-                title: "Welcome to Nexus | Dev Update - League of Legends",
-                type: "Article"
-              }
-            ].map((news, index) => (
+            {blogPosts.map((news, index) => (
               <Link 
                 to={`/news/${news.id}`} 
                 key={index} 
@@ -156,6 +136,7 @@ const Home = () => {
               >
                 <h3>{news.title}</h3>
                 <p>{news.type}</p>
+                
                 <div className="news-hover-effect"></div>
               </Link>
             ))}

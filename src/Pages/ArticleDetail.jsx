@@ -1,7 +1,23 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import LoadingScreen from '../components/LoadingScreen';
+import { blogPosts } from '../data/blogs';
 import "../css/News.css";
+
+// Simple markdown parser to replace **text** with <strong>text</strong>
+const parseMarkdown = (markdownText) => {
+  return markdownText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+};
+
+// Helper function to ensure proper image URL formatting
+const getImageUrl = (url) => {
+  // If the URL already starts with http or /, return as is
+  if (url.startsWith('http') || url.startsWith('/')) {
+    return url;
+  }
+  // Otherwise, prepend a slash (assuming the image is in the public folder)
+  return `/${url}`;
+};
 
 const ArticleDetail = () => {
   const { articleId } = useParams();
@@ -10,42 +26,12 @@ const ArticleDetail = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate API fetch - replace with actual API call
+    // Simulate API fetch delay; replace with actual API call as needed
     setTimeout(() => {
-      setArticle({
-        id: articleId,
-        title: "The Future of Gaming: IceShard's Vision for 2024",
-        author: "Sarah Chen",
-        date: "2024-01-15",
-        readTime: "8 min read",
-        category: "Development",
-        featured: true,
-        heroImage: "/img/live_stareams_bg.png",
-        content: [
-          {
-            type: "text",
-            content: "The gaming industry stands at the precipice of a revolutionary transformation. As we step into 2024, IceShard Games is leading the charge in redefining what's possible in virtual reality gaming."
-          },
-          {
-            type: "image",
-            url: "/img/home.png",
-            caption: "Next-gen VR technology in action"
-          },
-          {
-            type: "text",
-            content: "Our team of innovators and dreamers has been working tirelessly to create experiences that don't just entertain – they transform. With groundbreaking haptic feedback systems and advanced neural interfaces, we're pushing the boundaries of what's possible."
-          },
-          {
-            type: "image",
-            url: "/img/animate_icon.png",
-            caption: "Advanced animation systems"
-          },
-          {
-            type: "text",
-            content: "The future of gaming isn't just about better graphics or faster processors. It's about creating meaningful connections and experiences that transcend the digital realm."
-          }
-        ]
-      });
+      const foundArticle = blogPosts.find(
+        (a) => a.id.toString() === articleId
+      );
+      setArticle(foundArticle);
       setLoading(false);
     }, 1000);
   }, [articleId]);
@@ -54,40 +40,42 @@ const ArticleDetail = () => {
     return <LoadingScreen />;
   }
 
+  if (!article) {
+    return <div>Article not found.</div>;
+  }
+
+  // Process markdown in the article content
+  const parsedContent = parseMarkdown(article.content);
+
   return (
     <div className="article-detail-container">
-      <div className="article-hero" style={{ backgroundImage: `url(${article.heroImage})` }}>
+      <div
+        className="article-hero"
+        style={{ backgroundImage: `url(${getImageUrl(article.image)})` }}
+      >
         <div className="hero-overlay"></div>
         <button className="back-button" onClick={() => navigate('/news')}>
           ← Back to News
         </button>
-        <div className="hero-content">
+        <div className="hero-content futuristic-banner">
           <div className="article-meta">
             <span className="category">{article.category}</span>
             <span className="date">{article.date}</span>
             <span className="read-time">{article.readTime}</span>
           </div>
           <h1>{article.title}</h1>
-          <div className="author">By {article.author}</div>
+          {article.subtitle && (
+            <h3 className="subtitle">{article.subtitle}</h3>
+          )}
+          <div className="author">By {article.author.name}</div>
         </div>
       </div>
 
       <div className="article-full-content">
-        {article.content.map((block, index) => (
-          <div key={index} className={`content-block ${block.type}`}>
-            {block.type === 'text' ? (
-              <p>{block.content}</p>
-            ) : (
-              <figure>
-                <img src={block.url} alt={block.caption} />
-                <figcaption>{block.caption}</figcaption>
-              </figure>
-            )}
-          </div>
-        ))}
+        <div className="article-content" dangerouslySetInnerHTML={{ __html: parsedContent }} />
       </div>
     </div>
   );
 };
 
-export default ArticleDetail; 
+export default ArticleDetail;
