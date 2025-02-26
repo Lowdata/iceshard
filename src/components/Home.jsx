@@ -78,7 +78,7 @@ const Home = () => {
               "Next-Gen VR", 
               "Immersive Worlds", 
               "Social Gaming",
-              "Cutting-Edge Tech"
+              // "Cutting-Edge Tech"
             ].map((feature, index) => (
               <div 
                 key={index} 
