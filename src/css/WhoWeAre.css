@@ -992,4 +992,113 @@
 
 .item-overlay p {
   color: var(--text-secondary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 4rem 1rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-content {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: left;
+    order: 2; /* Move text below image on mobile */
+  }
+
+  .about-image {
+    height: 300px;
+    order: 1; /* Move image above text on mobile */
+  }
+
+  .tech-section {
+    padding: 3rem 1rem;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .tech-card {
+    padding: 1.5rem;
+  }
+
+  .tech-icon {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Small phone adjustments */
+@media (max-width: 480px) {
+  .about-section {
+    padding: 3rem 1rem;
+  }
+
+  .about-grid {
+    gap: 1.5rem;
+  }
+
+  .about-content {
+    font-size: 0.95rem;
+  }
+
+  .about-image {
+    height: 250px;
+  }
+
+  .tech-card {
+    padding: 1.2rem;
+  }
+
+  .tech-icon {
+    width: 120px;
+    height: 120px;
+  }
+
+  .showcase-section {
+    padding: 3rem 1rem;
+  }
+
+  .showcase-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .showcase-item {
+    height: 250px;
+  }
+
+  .item-overlay {
+    transform: translateY(0);
+    padding: 1rem;
+  }
+
+  .item-overlay h3 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-section {
+    min-height: 100vh;
+  }
+
+  .hero-content {
+    padding-top: 80px;
+  }
+
+  .mission-section,
+  .values-section,
+  .team-section {
+    padding: 2rem 1rem;
+  }
 } 
