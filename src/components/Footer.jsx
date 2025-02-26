@@ -1,90 +1,76 @@
 import "../css/logo.css"
+import { Link } from "react-router-dom"
+
 const Footer = () => (
-  <>
-    {/*::footer_part start::*/}
-    <footer className="footer_part">
-      <div className="footer_top">
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-6 col-lg-3">
-              <div className="single_footer_part">
-                <a href="/" className="footer_logo_iner">
-                  {" "}
-                  <img
-                    src="img/logos/default_logo.png"
-                    alt="logo"
-                    loading="lazy"
-                    className="-img"
-                  />{" "}
-                </a>
-                {/* <p>
-                  Heaven fruitful doesn&apos;t over lesser days appear creeping
-                  seasons so behold bearing days open
-                </p> */}
-              </div>
-            </div>
-            <div className="col-sm-6 col-lg-3">
-              <div className="single_footer_part">
-                <h4>Contact Info</h4>
-                <p>
-                  Address : 73, Central School Scheme, Airforce Colony,
-                  Jodhpur,342011
-                </p>
-                <p>Email : contact@iceshardgames.com</p>
-              </div>
-            </div>
-            <div className="col-sm-6 col-lg-3"></div>
-            <div className="col-sm-6 col-lg-3"></div>
+  <footer className="footer_part">
+    <div className="footer_content">
+      <div className="footer_main">
+        {/* Logo Section */}
+        <div className="footer_logo_section">
+          <Link to="/" className="footer_logo">
+            <img
+              src="img/logos/default_logo.png"
+              alt="IceShard Games"
+              className="glow-effect"
+            />
+          </Link>
+        </div>
+
+        {/* Quick Links */}
+        <div className="footer_links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/who-we-are">About Us</Link></li>
+            <li><Link to="/team">Careers</Link></li>
+            <li><Link to="/news">News</Link></li>
+          </ul>
+        </div>
+
+        {/* Contact Info */}
+        <div className="footer_contact">
+          <h4>Contact Us</h4>
+          <div className="contact_info">
+            <p>
+              <i className="fas fa-map-marker-alt"></i>
+              73, Central School Scheme, Airforce Colony,
+              Jodhpur, 342011
+            </p>
+            <p>
+              <i className="fas fa-envelope"></i>
+              contact@iceshardgames.com
+            </p>
           </div>
         </div>
-      </div>
-      <div className="copygight_text">
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-8">
-              <div className="copyright_text">
-                <p>
-                  Copyright © All rights reserved | This website is made{" "}
-                  <i className="ti-heart" aria-hidden="true" /> by{" "}
-                  <a href="/" target="_blank">
-                    IceShard Games
-                  </a>
-                  {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
-                </p>
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <div className="footer_icon social_icon">
-                <ul className="list-unstyled">
-                  <li>
-                    <a href="#" className="single_social_icon">
-                      <i className="fab fa-facebook-f" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="single_social_icon">
-                      <i className="fab fa-twitter" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="single_social_icon">
-                      <i className="fas fa-globe" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="single_social_icon">
-                      <i className="fab fa-behance" />
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+
+        {/* Social Links */}
+        {/* <div className="footer_social">
+          <h4>Follow Us</h4>
+          <div className="social_links">
+            <a href="#" className="social_icon" aria-label="Facebook">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" className="social_icon" aria-label="Twitter">
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a href="#" className="social_icon" aria-label="LinkedIn">
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" className="social_icon" aria-label="Instagram">
+              <i className="fab fa-instagram"></i>
+            </a>
           </div>
-        </div>
+        </div> */}
       </div>
-    </footer>
-    {/*::footer_part end::*/}
-  </>
+
+      {/* Copyright Section */}
+      <div className="footer_bottom">
+        <p>
+          © {new Date().getFullYear()} IceShard Games. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
 );
 
 export default Footer;
