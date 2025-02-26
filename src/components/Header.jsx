@@ -72,16 +72,26 @@ const Header = () => {
           <li>
             <Link to="/news" onClick={() => setMenuOpen(false)}>NEWS</Link>
           </li>
+          <li>
+            <Link 
+              to="/pre-register" 
+              className="pre-register"
+              onClick={() => setMenuOpen(false)}
+            >
+              Pre-Register
+            </Link>
+          </li>
         </ul>
-
-        <Link 
-          to="/pre-register" 
-          className="pre-register"
-          onClick={() => setMenuOpen(false)}
-        >
-          Pre-Register
-        </Link>
       </nav>
+
+      {/* Pre-register button for desktop */}
+      <Link 
+        to="/pre-register" 
+        className="pre-register"
+        onClick={() => setMenuOpen(false)}
+      >
+        Pre-Register
+      </Link>
     </header>
   );
 };
