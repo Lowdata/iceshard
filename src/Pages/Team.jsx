@@ -113,7 +113,7 @@ export  const teamMembers = [
     role: "3D Generalist",
     faction: "Content Craftsmen ✍️📜",
     description:
-      "Wordsmith. Storyteller. Commander of narratives. Parth weaves words into powerful weapons, shaping perception and inspiring loyalty. Every story he crafts is a strategic blow against mediocrity. He writes to conquer.",
+      "Master of virtual realms. Mehul crafts immersive experiences, transporting gamers to new dimensions. His 3D artistry is a symphony of light, texture, and movement, conjuring worlds that captivate and inspire. He builds to transport.",
     img: "img/Team/Mehul.jpg",
     social: {
       linkedin: "#",
