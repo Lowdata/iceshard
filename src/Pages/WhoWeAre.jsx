@@ -119,7 +119,7 @@ const WhoWeAre = () => {
             <div className="showcase-item">
               <img src="img/event_bg.png" alt="Project 2" />
               <div className="item-overlay">
-                <h3>Project Nexus</h3>
+                <h3>VR Hardware</h3>
                 <p>A revolutionary VR experience</p>
               </div>
             </div>
@@ -127,7 +127,7 @@ const WhoWeAre = () => {
             <img src="img/live_streams_1.png" alt="Project 1" />
               
               <div className="item-overlay">
-                <h3>Cyber Realm</h3>
+                <h3>Fusion VR</h3>
                 <p>Next-gen cyberpunk adventure</p>
               </div>
             </div>
