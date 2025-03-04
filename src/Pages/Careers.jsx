@@ -189,6 +189,7 @@ const Careers = () => {
           src="img/live_stareams_bg.png" 
           alt="IceShard Games Careers" 
           className="banner-image"
+          loading="lazy"
         />
         <div className="banner-content">
           <h1 className="glitch-text" data-text="Join Our Elite Team">Join Our Elite Team</h1>

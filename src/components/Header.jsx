@@ -46,7 +46,7 @@ const Header = () => {
     <header className={`header ${visible ? "header-visible" : "header-hidden"}`}>
       <div className="logo">
         <Link to="/" onClick={() => setMenuOpen(false)}>
-          <img src="/img/logos/default_logo.png" alt="Logo" />
+          <img src="/img/logos/default_logo.png" alt="Logo" loading="lazy" className="glow-effect" />
         </Link>
       </div>
 

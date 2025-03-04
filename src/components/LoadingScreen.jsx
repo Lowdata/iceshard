@@ -5,12 +5,14 @@ const LoadingScreen = () => {
     <div className="loading-screen">
       <div className="loading-content">
         <div className="cyber-loader">
+          {/* Company Logo with glowing pulse effect */}
+          <img
+            src="/img/logos/logo_1.png"
+            alt="Company Logo"
+            className="company-logo"
+            loading="lazy"
+          />
           <div className="loader-circle"></div>
-          <div className="loader-lines">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
         </div>
         <h2>Loading</h2>
         <div className="loading-text">
@@ -26,4 +28,4 @@ const LoadingScreen = () => {
   );
 };
 
-export default LoadingScreen; 
+export default LoadingScreen;

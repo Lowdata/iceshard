@@ -219,7 +219,7 @@ const Team = () => {
         <div className="card-back">
           <div className="back-content">
             <div className="watermark">
-              <img src="img/logos/watermark_logo" alt="IceShard Logo" />
+              <img src="img/logos/watermark_logo" alt="IceShard Logo" loading="lazy" />
             </div>
             <h3 className="glitch-text" data-text={`${member.name} | ${member.role}`}>
               {member.name} | {member.role}

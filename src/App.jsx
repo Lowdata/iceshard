@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import ScrollToTop from "./components/ScrollToTop";
-// Import the Team page
+import NotFound from "./Pages/NotFound";
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         <Route path="/news" element={<Layout page="news" />} />
         <Route path="/news/:articleId" element={<Layout page="article" />} />
         <Route path="/careers" element={<Layout page="careers" />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       </ScrollToTop>
     </Router>

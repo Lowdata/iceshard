@@ -8,11 +8,8 @@ const Footer = () => (
         {/* Logo Section */}
         <div className="footer_logo_section">
           <Link to="/" className="footer_logo">
-            <img
-              src="img/logos/default_logo.png"
-              alt="IceShard Games"
-              className="glow-effect"
-            />
+            <img src="/img/logos/default.jpg" alt="IceShard" loading="lazy" className="glow-effect" />
+
           </Link>
         </div>
 

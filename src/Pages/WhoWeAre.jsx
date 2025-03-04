@@ -66,7 +66,7 @@ const WhoWeAre = () => {
           </div>
         </div>
         <div className="hero-visual">
-          <img src="img/about_img.png" alt="Cyber Visual" className="cyber-image" />
+          <img src="img/about_img.png" alt="Cyber Visual" className="cyber-image" loading="lazy" />
           <div className="glitch-overlay"></div>
         </div>
       </section>
@@ -80,7 +80,7 @@ const WhoWeAre = () => {
             <p>With a focus on next-generation gaming experiences, we're not just creating games – we're crafting digital realms where imagination knows no bounds.</p>
           </div>
           <div className="about-image">
-            <img src="img/banner_img.png" alt="IceShard Journey" />
+            <img src="img/banner_img.png" alt="IceShard Journey" loading="lazy" />
           </div>
         </div>
       </section>
@@ -90,21 +90,21 @@ const WhoWeAre = () => {
         <div className="tech-grid">
           <div className="tech-card">
             <div className="tech-icon">
-              <img src="img/unreal.jpeg" alt="Unreal Engine" />
+              <img src="img/unreal.jpeg" alt="Unreal Engine" loading="lazy" />
             </div>
             <h3>Unreal Engine 5</h3>
             <p>Leveraging the most advanced real-time 3D creation tool for photorealistic visuals and immersive worlds.</p>
           </div>
           <div className="tech-card">
             <div className="tech-icon">
-              <img src="img/vr.jpeg" alt="VR Technology" />
+              <img src="img/vr.jpeg" alt="VR Technology" loading="lazy" />
             </div>
             <h3>VR Innovation</h3>
             <p>Creating next-generation virtual reality experiences that transport players to new dimensions.</p>
           </div>
           <div className="tech-card">
             <div className="tech-icon">
-              <img src="img/ai.jpeg" alt="AI Systems" />
+              <img src="img/ai.jpeg" alt="AI Systems" loading="lazy" />
             </div>
             <h3>AI Systems</h3>
             <p>Implementing advanced artificial intelligence for dynamic and responsive gaming environments.</p>
@@ -117,14 +117,14 @@ const WhoWeAre = () => {
           <h2 className="glitch-text" data-text="Our Latest Projects">Our Latest Projects</h2>
           <div className="showcase-grid">
             <div className="showcase-item">
-              <img src="img/event_bg.png" alt="Project 2" />
+              <img src="img/event_bg.png" alt="Project 2" loading="lazy" />
               <div className="item-overlay">
                 <h3>VR Hardware</h3>
                 <p>A revolutionary VR experience</p>
               </div>
             </div>
             <div className="showcase-item">
-            <img src="img/live_streams_1.png" alt="Project 1" />
+            <img src="img/live_streams_1.png" alt="Project 1" loading="lazy" />
               
               <div className="item-overlay">
                 <h3>Fusion VR</h3>
@@ -143,7 +143,7 @@ const WhoWeAre = () => {
               <h2 className="glitch-text" data-text="Our Vision">Our Vision</h2>
               <p>We envision a future where technology enhances human experiences in ways that are inclusive, immersive, and impactful.</p>
               <div className="card-visual">
-                <img src="img/gallery/gallery_item_5.png" alt="Vision" />
+                <img src="img/gallery/gallery_item_5.png" alt="Vision" loading="lazy" />
               </div>
             </div>
             <div className="cyber-glow"></div>
@@ -154,7 +154,7 @@ const WhoWeAre = () => {
               <h2 className="glitch-text" data-text="Our Mission">Our Mission</h2>
               <p>Building a thriving ecosystem where players, creators, and innovators come together to explore boundless possibilities.</p>
               <div className="card-visual">
-                <img src="img/about_img.png" alt="Mission" />
+                <img src="img/about_img.png" alt="Mission" loading="lazy" />
               </div>
             </div>
             <div className="cyber-glow"></div>

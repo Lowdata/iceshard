@@ -55,7 +55,7 @@ const Home = () => {
       <section className="hero-section">
         {/* Main Hero Image */}
         <div className="hero-image-container">
-          <img src="/home.png" alt="Virtual Globe" className="hero-main-image" />
+          <img src="/home.png" alt="Virtual Globe" className="hero-main-image" loading="lazy" />
           <div className="hero-gradient-overlay"></div>
         </div>
 
@@ -121,7 +121,7 @@ const Home = () => {
         <h2 className="section-title">What We're Working On</h2>
         <div className="work-content">
           <div className="work-image-container">
-            <img src="/img.png" alt="VR Project" className="work-image" />
+            <img src="/img.png" alt="VR Project" className="work-image" loading="lazy" />
             <div className="image-overlay">
               <span>Latest Project</span>
             </div>
@@ -137,7 +137,7 @@ const Home = () => {
                 <h3>{news.title}</h3>
                 
                 
-                <img className="news-item-image" src={news.image} alt={news.title} />
+                <img className="news-item-image" src={news.image} alt={news.title} loading="lazy" />
                 
                 <div className="news-hover-effect"></div>
               </Link>

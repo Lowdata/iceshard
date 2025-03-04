@@ -1,0 +1,81 @@
+.not-found-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #000428, #004e92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    text-align: center;
+  }
+  
+  .not-found-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Ensure everything stays centered */
+    height: 100%; /* Full height to center the content */
+    gap: 20px; /* Adds spacing between elements */
+  }
+  
+  .not-found-logo {
+    width: 200px; /* Adjusted size */
+    height: auto; /* Maintain aspect ratio */
+    animation: glow 1.5s infinite alternate;
+  }
+  
+  .glow-text {
+    font-size: 6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary), 0 0 30px var(--primary);
+    animation: pulseGlow 2s infinite alternate;
+  }
+  
+  .glow-subtext {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    text-shadow: 0 0 5px var(--primary);
+  }
+  
+  .back-home-btn {
+    margin-top: 10px; /* Adjusted margin */
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    color: #fff;
+    background: var(--primary);
+    border-radius: 8px;
+    text-decoration: none;
+    text-shadow: 0 0 5px #fff;
+    box-shadow: 0 0 10px var(--primary);
+    transition: 0.3s;
+  }
+  
+  .back-home-btn:hover {
+    background: #00eaff;
+    box-shadow: 0 0 15px #00eaff;
+  }
+  
+  /* Glowing Animations */
+  @keyframes pulseGlow {
+    0% {
+      text-shadow: 0 0 10px var(--primary), 0 0 30px var(--primary);
+    }
+    100% {
+      text-shadow: 0 0 20px var(--primary), 0 0 40px var(--primary);
+    }
+  }
+  
+  @keyframes glow {
+    0% {
+      filter: drop-shadow(0 0 5px var(--primary));
+    }
+    100% {
+      filter: drop-shadow(0 0 15px var(--primary));
+    }
+  }
+  
